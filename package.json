@@ -1,7 +1,7 @@
 {
-  "name": "super-atchariya-backend",
+  "name": "vacq",
   "version": "1.0.0",
-  "description": "",
+  "description": "for SW Dev Prac only test",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,19 +9,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nick-solich/Super-Atchariya-Backend.git"
+    "url": "git+https://github.com/Nick-solich/VacQ.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Nick-solich/Super-Atchariya-Backend/issues"
+    "url": "https://github.com/Nick-solich/VacQ/issues"
   },
-  "homepage": "https://github.com/Nick-solich/Super-Atchariya-Backend#readme",
+  "homepage": "https://github.com/Nick-solich/VacQ#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.20"
   }
 }
