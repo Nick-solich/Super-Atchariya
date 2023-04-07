@@ -1,7 +1,8 @@
-# SW Dev Practice
+# ✅✅✅ SW Dev Practice ✅✅✅
+
 ## Project Listings. All teams must conform to the non-functional requirements and
 
-### Non-Functional Requirements
+### Non-Functional Requirements 🐱‍👤
 
 - [ ] Security:
 - [ ] The system shall authenticate users using usernamepassword.
@@ -11,7 +12,7 @@
 - [ ] Usability:
 - [ ] The system shall be used and test via Postman.
 
-### Constraints
+### Constraints 🐱‍👓
 
 - [ ] The system shall be a web API.
 - [ ] The frontend part of the application is not required.
@@ -19,7 +20,7 @@
 - [ ] APIs.
 - [ ] The database system can be either MongoDB Atlas or MySQL.
 
-### Project Functional Requirements
+### Project Functional Requirements 🐱
 
 #### Project#3: Online Job Fair Registration
 
@@ -33,4 +34,4 @@
 - [ ] The system shall allow the admin to edit any interview session bookings.
 - [ ] The system shall allow the admin to delete any interview session bookings.
 
-#### Additional Functional Requirements
+#### Additional Functional Requirements 🐱‍🏍
