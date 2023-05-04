@@ -7,7 +7,6 @@ exports.getCompanies = async (req, res, next) => {
   let query;
   //Copy req.query
   const reqQuery = { ...req.query };
-
   //Fields to exclude
   const removeFields = ["select", "sort", "page", "limit"];
 
@@ -69,6 +68,7 @@ exports.getCompanies = async (req, res, next) => {
       .status(200)
       .json({ success: true, count: companies.length, data: companies });
   } catch (err) {
+    console.error(err.message);
     res.status(400).json({ success: false });
   }
 };

@@ -5,7 +5,7 @@ const {
   createCompany,
   updateCompany,
   deleteCompany,
-} = require("../controllers/hospitals");
+} = require("../controllers/companies");
 
 /**
  * @swagger

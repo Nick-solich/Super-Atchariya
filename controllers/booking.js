@@ -61,8 +61,7 @@ exports.getBooking = async (req, res, next) => {
 //@access   Private
 exports.addBooking = async (req, res, next) => {
   try {
-    req.body.Company = req.params.companyId;
-
+    req.body.company = req.params.companyId;
     const company = await Company.findById(req.params.companyId);
 
     if (!company) {
@@ -71,7 +70,7 @@ exports.addBooking = async (req, res, next) => {
         message: `No company with the id of ${req.params.companyId}`,
       });
     }
-    console.log(req.body);
+    // console.log(req.body);
     //add user to req.body
     req.body.user = req.user.id;
     //Check for existing booking
@@ -83,7 +82,7 @@ exports.addBooking = async (req, res, next) => {
         message: `The user with ID ${req.user.id} has already made 3 bookings`,
       });
     }
-
+    console.log(req.body);
     const booking = await Booking.create(req.body);
     res.status(200).json({
       success: true,
