@@ -1,11 +1,10 @@
 const express = require("express");
 const {
-  getHospitals,
-  getHospital,
-  createHospital,
-  updateHospital,
-  deleteHospital,
-  getVacCenters,
+  getCompanies,
+  getCompany,
+  createCompany,
+  updateCompany,
+  deleteCompany,
 } = require("../controllers/hospitals");
 
 /**
@@ -178,23 +177,22 @@ const {
  */
 
 //Include other resource routers
-const appointmentRouter = require("./appointments");
+const bookingRouter = require("./bookings");
 
 const router = express.Router();
 const { protect, authorize } = require("../middleware/auth");
 
 //Re-route into other resource routers
-router.use("/:hospitalId/appointments", appointmentRouter);
+router.use("/:companyId/bookings", bookingRouter);
 
-router.route("/vacCenters").get(getVacCenters);
 router
   .route("/")
-  .get(getHospitals)
-  .post(protect, authorize("admin"), createHospital);
+  .get(getCompanies)
+  .post(protect, authorize("admin"), createCompany);
 router
   .route("/:id")
-  .get(getHospital)
-  .put(protect, authorize("admin"), updateHospital)
-  .delete(protect, authorize("admin"), deleteHospital);
+  .get(getCompany)
+  .put(protect, authorize("admin"), updateCompany)
+  .delete(protect, authorize("admin"), deleteCompany);
 
 module.exports = router;
