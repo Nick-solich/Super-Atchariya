@@ -1,29 +1,12 @@
-const Hospital = require("../models/Hospital");
-const vacCenter = require("../models/VacCenter");
+const Company = require("../models/Company");
 
-//@desc     Get vaccine centers
-//@route    GET /api/v1/hospitals/vacCenters/
+//@desc     Get all companies
+//@route    GET /api/v1/companies
 //@access   Public
-exports.getVacCenters = async (req, res, next) => {
-  vacCenter.getAll((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while retrieving Vaccine Centers.",
-      });
-    else res.send(data);
-  });
-};
-
-//@desc     Get all hospitals
-//@route    GET /api/v1/hospitals
-//@access   Public
-exports.getHospitals = async (req, res, next) => {
+exports.getCompanies = async (req, res, next) => {
   let query;
   //Copy req.query
   const reqQuery = { ...req.query };
-
   //Fields to exclude
   const removeFields = ["select", "sort", "page", "limit"];
 
@@ -37,7 +20,7 @@ exports.getHospitals = async (req, res, next) => {
     /\b(gt|gte|lt|lte|in)\b/g,
     (match) => `$${match}`
   );
-  query = Hospital.find(JSON.parse(queryStr)).populate("appointments");
+  query = Company.find(JSON.parse(queryStr)).populate("bookings");
 
   //Select fields
   if (req.query.select) {
@@ -60,10 +43,10 @@ exports.getHospitals = async (req, res, next) => {
   const endIndex = page * limit;
 
   try {
-    const total = await Hospital.countDocuments();
+    const total = await Company.countDocuments();
     query = query.skip(startIndex).limit(limit);
     //Executing query
-    const hospitals = await query;
+    const companies = await query;
 
     //Pagination result
     const pagination = {};
@@ -83,71 +66,72 @@ exports.getHospitals = async (req, res, next) => {
     }
     res
       .status(200)
-      .json({ success: true, count: hospitals.length, data: hospitals });
+      .json({ success: true, count: companies.length, data: companies });
   } catch (err) {
+    console.error(err.message);
     res.status(400).json({ success: false });
   }
 };
 
-//@desc     Get single hospitals
-//@route    GET /api/v1/hospitals/:id
+//@desc     Get single companies
+//@route    GET /api/v1/companies/:id
 //@access   Public
-exports.getHospital = async (req, res, next) => {
+exports.getCompany = async (req, res, next) => {
   try {
-    const hospital = await Hospital.findById(req.params.id);
+    const company = await Company.findById(req.params.id);
 
-    if (!hospital) {
+    if (!company) {
       return res.status(400).json({ success: false });
     }
-    res.status(200).json({ success: true, data: hospital });
+    res.status(200).json({ success: true, data: company });
   } catch (err) {
     res.status(400).json({ success: false });
   }
 };
 
-//@desc     Create a hospital
-//@route    POST /api/v1/hospitals
+//@desc     Create a company
+//@route    POST /api/v1/companies
 //@access   Private
-exports.createHospital = async (req, res, next) => {
-  const hospital = await Hospital.create(req.body);
+exports.createCompany = async (req, res, next) => {
+  const company = await Company.create(req.body);
   res.status(201).json({
     success: true,
-    data: hospital,
+    data: company,
   });
 };
 
-//@desc     Update single hospital
-//@route    PUT /api/v1/hospitals/:id
+//@desc     Update single company
+//@route    PUT /api/v1/companies/:id
 //@access   Private
-exports.updateHospital = async (req, res, next) => {
+exports.updateCompany = async (req, res, next) => {
   try {
-    const hospital = await Hospital.findByIdAndUpdate(req.params.id, req.body, {
+    const company = await Company.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
 
-    if (!hospital) {
+    if (!company) {
       return res.status(400).json({ success: false });
     }
 
-    res.status(200).json({ success: true, data: hospital });
+    res.status(200).json({ success: true, data: company });
   } catch (err) {
     res.status(400).json({ success: false });
   }
 };
 
-//@desc     Delete single hospital
-//@route    DELETE /api/v1/hospitals/:id
+//@desc     Delete single company
+//@route    DELETE /api/v1/companies/:id
 //@access   Private
-exports.deleteHospital = async (req, res, next) => {
+exports.deleteCompany = async (req, res, next) => {
   try {
-    const hospital = await Hospital.findById(req.params.id);
+    const company = await Company.findById(req.params.id);
 
-    if (!hospital) {
+    if (!company) {
       return res.status(400).json({ success: false });
     }
 
-    hospital.remove();
+    company.remove();
     res.status(200).json({ success: true, data: {} });
   } catch (err) {
     res.status(400).json({ success: false });
