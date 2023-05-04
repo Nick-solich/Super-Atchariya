@@ -22,9 +22,8 @@
 ## Constraints 🐱‍👓
 
 - [x] The system shall be a web API.
-- [ ] The frontend part of the application is not required.
-- [x] The development team shall develop the backend system as REST
-- [ ] APIs.
+- [x] The frontend part of the application is not required.
+- [x] The development team shall develop the backend system as REST APIs.
 - [x] The database system can be either MongoDB Atlas or MySQL.
 
 ---
