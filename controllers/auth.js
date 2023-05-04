@@ -5,11 +5,12 @@ const User = require("../models/User");
 // @access    Public
 exports.register = async (req, res, next) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, tel, email, password, role } = req.body;
 
     // create user to the database
     const user = await User.create({
       name,
+      tel,
       email,
       password,
       role,
@@ -32,12 +33,10 @@ exports.login = async (req, res, next) => {
 
     // Validate email & password
     if (!email || !password) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          error: "Please provide an email and password",
-        });
+      return res.status(400).json({
+        success: false,
+        error: "Please provide an email and password",
+      });
     }
 
     // Check for user
@@ -64,12 +63,10 @@ exports.login = async (req, res, next) => {
     // res.status(200).json({ success: true, token });
     sendTokenResponse(user, 200, res);
   } catch (err) {
-    res
-      .status(401)
-      .json({
-        success: false,
-        msg: "Cannot convert email or password to string",
-      });
+    res.status(401).json({
+      success: false,
+      msg: "Cannot convert email or password to string",
+    });
   }
 };
 
