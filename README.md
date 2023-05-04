@@ -34,13 +34,13 @@
 
 1. [x] (Nick) The system shall allow a user to register by specifying the name, telephone number, email, and password.
 2. [x] (Nick) After registration, the user becomes a registered user, and the system shall allow the user to log in to use the system by specifying the email and password. The system shall allow a registered user to log out.
-3. [ ] (Ray) After login, the system shall allow the registered user to book up to 3 interview sessions by specifying the date (during May 10th-13th, 2022) and the preferred companies. The company list is also provided to the user. A company information includes the company name, address, website, description, and telephone number.
-4. [ ] (Ray) The system shall allow the registered user to view his interview session bookings.
-5. [ ] (Ray) The system shall allow the registered user to edit his interview session bookings.
-6. [ ] (Ray) The system shall allow the registered user to delete his interview session bookings.
-7. [ ] (Nick) The system shall allow the admin to view any interview session bookings.
-8. [ ] (Nick) The system shall allow the admin to edit any interview session bookings.
-9. [ ] (Nick) The system shall allow the admin to delete any interview session bookings.
+3. [x] (Ray) After login, the system shall allow the registered user to book up to 3 interview sessions by specifying the date (during May 10th-13th, 2022) and the preferred companies. The company list is also provided to the user. A company information includes the company name, address, website, description, and telephone number.
+4. [x] (Ray) The system shall allow the registered user to view his interview session bookings.
+5. [x] (Ray) The system shall allow the registered user to edit his interview session bookings.
+6. [x] (Ray) The system shall allow the registered user to delete his interview session bookings.
+7. [x] (Nick) The system shall allow the admin to view any interview session bookings.
+8. [x] (Nick) The system shall allow the admin to edit any interview session bookings.
+9. [x] (Nick) The system shall allow the admin to delete any interview session bookings.
 
 #### Additional Functional Requirements 🐱‍🏍
 
