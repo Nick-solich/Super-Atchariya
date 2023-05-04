@@ -7,6 +7,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  tel: {
+    type: String,
+    required: [true, "Please enter a telephone number"],
+  },
   email: {
     type: String,
     required: [true, "Please enter an email"],
@@ -16,16 +20,16 @@ const UserSchema = new mongoose.Schema({
       "Please enter a valid email",
     ],
   },
-  role: {
-    type: String,
-    enum: ["user", "admin"],
-    default: "user",
-  },
   password: {
     type: String,
     required: [true, "Please enter a password"],
     minlength: 6,
     select: false,
+  },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
