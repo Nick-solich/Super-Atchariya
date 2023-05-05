@@ -83,7 +83,25 @@ exports.addBooking = async (req, res, next) => {
         message: `The user with ID ${req.user.id} has already made 3 bookings`,
       });
     }
-    console.log(req.body);
+
+    if (existingBooking.length >= 3 && req.user.role !== "admin") {
+      return res.status(400).json({
+        success: false,
+        message: `The user with ID ${req.user.id} has already made 3 bookings`,
+      });
+    }
+
+    // Check if date is between  10 may 2022 to 13 may 2022
+    const bkDate = new Date(req.body.bkDate);
+    const startDate = new Date("2022-05-10T00:00:00.000Z3");
+    const endDate = new Date("2022-05-13T23:59:59.000Z3");
+    if (bkDate < startDate || bkDate > endDate) {
+      return res.status(400).json({
+        success: false,
+        message: `The booking date must be between 10 May 2022 to 13 May 2022`,
+      });
+    }
+    console.log(req.body.bkDate);
     const booking = await Booking.create(req.body);
     res.status(200).json({
       success: true,
@@ -115,6 +133,17 @@ exports.updateBooking = async (req, res, next) => {
       return res.status(401).json({
         success: false,
         message: `User ${req.user.id} is not authorized to update this booking`,
+      });
+    }
+
+    // Check if date is between  10 may 2022 to 13 may 2022
+    const bkDate = new Date(req.body.bkDate);
+    const startDate = new Date("2022-05-10T00:00:00.000Z3");
+    const endDate = new Date("2022-05-13T23:59:59.000Z3");
+    if (bkDate < startDate || bkDate > endDate) {
+      return res.status(400).json({
+        success: false,
+        message: `The booking date must be between 10 May 2022 to 13 May 2022`,
       });
     }
 
