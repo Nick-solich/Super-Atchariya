@@ -93,8 +93,9 @@ exports.addBooking = async (req, res, next) => {
 
     // Check if date is between  10 may 2022 to 13 may 2022
     const bkDate = new Date(req.body.bkDate);
-    const startDate = new Date("2022-05-10T00:00:00.000Z3");
-    const endDate = new Date("2022-05-13T23:59:59.000Z3");
+    const startDate = new Date("2022-05-10T00:00:00.000Z");
+    const endDate = new Date("2022-05-13T23:59:59.000Z");
+    console.log("test: ", bkDate, startDate, endDate);
     if (bkDate < startDate || bkDate > endDate) {
       return res.status(400).json({
         success: false,
@@ -138,8 +139,8 @@ exports.updateBooking = async (req, res, next) => {
 
     // Check if date is between  10 may 2022 to 13 may 2022
     const bkDate = new Date(req.body.bkDate);
-    const startDate = new Date("2022-05-10T00:00:00.000Z3");
-    const endDate = new Date("2022-05-13T23:59:59.000Z3");
+    const startDate = new Date("2022-05-10T00:00:00.000Z");
+    const endDate = new Date("2022-05-13T23:59:59.000Z");
     if (bkDate < startDate || bkDate > endDate) {
       return res.status(400).json({
         success: false,
